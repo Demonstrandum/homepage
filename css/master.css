@@ -45,6 +45,30 @@ body, html {
   opacity: 1 !important;
 }
 
+.url-bar{
+  position: absolute;
+  width: 50em;
+  height: 7em;
+  top: calc(50% - 3.5em);
+  left: calc(50% - 25em);
+  border-radius: 12px;
+  filter: drop-shadow(0 4px 3px #bbb);
+  background: #f2f2f2;
+  font-weight: 200;
+}
+.url-bar input {
+  border: none;
+  padding: 0em .4em;
+  font-size: 4em;
+  margin: 9px;
+  width: calc(100% - 2em);
+  height: calc(100% - 18px);
+  background: transparent;
+}
+::-webkit-input-placeholder {
+    color: #aaa;
+}
+
 .top-bar {
   margin: 1.5em 0;
   display: flex;
@@ -56,35 +80,55 @@ body, html {
 .title {
   font-size: 2.75em;
   float: left;
+  margin-right: 30px;
+}
+
+.add-items, .plus {
+  display: inline-block;
+  float: right;
+  font-size: 2em;
+  color: #ddd;
+  cursor: pointer;
+}
+.add-items {
+  margin-left: 20px;
+  height: 100%;
+  width: 30px;
+}
+.plus {
+  opacity: 0;
 }
 
 .slider {
-  position: absolute;
-  right: 0;
+  float: right;
   display: inline-flex;
   align-items: center;
   overflow-y: hidden;
   overflow-x: auto;
-  width: calc((100% - 232px) - 40px);
+  width: calc((100% - 280px) - 40px);
   height: 4.5em;
-  float: right;
   white-space: nowrap;
   border: 1px solid #ddd;
   border-radius: 10px;
 }
 
-.slider div {
+.slider a {
   display: inline-block;
   margin: 5px 5px 0 5px;
   padding: 10px;
   background: #111;
   color: #fff;
   border-radius: 10px;
+  text-decoration: none;
 }
-.slider div:first-child {
+.slider a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.slider a:first-child {
   margin-left: 12px;
 }
-.slider div:last-child {
+.slider a:last-child {
   background: transparent;
   padding: 2px;
 }
@@ -104,7 +148,7 @@ body, html {
 }
 
 .pop-top {
-  height: calc(100% - 13em - 4px);
+  height: calc(100% - 14em);
   width: 100%;
 }
 .pop-top .websites-items {
@@ -114,8 +158,8 @@ body, html {
   overflow-y: scroll;
 }
 .pop-top h1 {
-  margin: 0;
-  font-weight: 500;
+  margin: 0.3em 0;
+  font-weight: 200;
 }
 
 .website-list {
@@ -170,16 +214,4 @@ body, html {
   border: 1px solid #ddd;
   font-size: 1.5em;
   font-weight: 200;
-}
-
-.add-items, .plus {
-  position: absolute;
-  right: -.7em;
-  font-size: 2em;
-  top: .375em;
-  color: #ddd;
-  cursor: pointer;
-}
-.plus {
-  opacity: 0;
 }
