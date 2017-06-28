@@ -1,1 +1,114 @@
-/(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test()
+//    /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test("urlhere.com")
+
+(function($) {
+    $.fn.clickToggle = function(func1, func2) {
+        var funcs = [func1, func2];
+        this.data('toggleclicked', 0);
+        this.click(function() {
+            var data = $(this).data();
+            var tc = data.toggleclicked;
+            $.proxy(funcs[tc], this)();
+            data.toggleclicked = (tc + 1) % 2;
+        });
+        return this;
+    };
+}(jQuery)); // thanks Felix Kling, stack overflow
+
+$('.plus').clickToggle(
+  function() {
+    $('.plus').css({
+      "opacity": 1,
+      "transform": "rotate(45deg)",
+      "color": "#999"
+    });
+    $('.popup').css("z-index", 2);
+    $('.popup').css("opacity", 1).delay(220);
+  },
+  function() {
+    $('.plus').removeAttr("style");
+    $('.plus').css("transform", "rotate(0deg)");
+    $('.popup').css("opacity", 0);
+    $('.popup').css("z-index", -1).delay(220);
+  }
+);
+
+$('.addWebsite').click(function() {
+  var inputWebsite = $('.input-website').val();
+  var inputURL     = $('.input-URL').val();
+  if (inputWebsite === "" || inputURL === "") { return 1; }
+
+  $('.input-website').val("");
+  $('.input-URL').val(""); // reset
+
+  $('.website-list').append(
+    "<li>\n" +
+      "<span class=\"website-name\">" + inputWebsite + "</span> \n" +
+      "<i class=\"fa fa-times remove-website\"></i> \n" +
+      "<a target=\"_blank\" class=\"website-link\" href=\"" + inputURL + "\">" + inputURL + "</a> \n" +
+    "</li>\n"
+  );
+});
+
+$('.input-URL').keypress(function(event) {
+ if(event.which === 13) {
+   var inputWebsite = $('.input-website').val();
+   var inputURL     = $('.input-URL').val();
+   if (inputWebsite === "" || inputURL === "") { return 1; }
+
+   $('.input-website').val("");
+   $('.input-URL').val(""); // reset
+
+   $('.website-list').append(
+     "<li>\n" +
+       "<span class=\"website-name\">" + inputWebsite + "</span> \n" +
+       "<i class=\"fa fa-times remove-website\"></i> \n" +
+       "<a target=\"_blank\" class=\"website-link\" href=\"" + inputURL + "\">" + inputURL + "</a> \n" +
+     "</li>\n"
+   );
+  }
+});
+
+// $('.remove-website').on('click', (function() {
+//   $(this).parent().remove();
+// });
+
+$(document).on("click", ".remove-website", function() {
+  $(this).parent().remove();
+});
+
+// $(document).on("click", ".title", function() {
+//   console.log($('.website-list').prop('outerHTML'));
+// });
+// $(window).on("load", function(e) {
+//   localStorage.setItem('website-list', $('.website-list').prop('outerHTML'));
+// });
+$(window).on("unload", function(e) {
+  localStorage.setItem('website-list', $('.website-list').prop('outerHTML'));
+});
+if (localStorage.getItem('website-list') !== null) {
+  $('.website-list').replaceWith(localStorage.getItem('website-list'));
+}
+// SIX (FOUR SIGNIFICANT) LINES FOR OFFLINE STORAGE AND DEFAULTING, I LOVE YOU HTML5
+
+
+$('body').hover(function() {
+  $('.plus').toggleClass('show');
+});
+
+$('.slider').hover(function() {
+  $('html').toggleClass('scroll-hide');
+});
+
+sliderItems = $('.slider').children('.slider-item');
+
+hue = 360 / sliderItems.length;
+i = sliderItems.length
+sliderItems.each(function () {
+  console.log($(this).attr('class'));
+  $(this).addClass('hue-' + i);
+
+  $('.hue-' + i).css('background', 'hsl(' + (hue * (i - 0.4)) + ', 80%, 60%)');
+  i--;
+});
+
+console.log(hue);
