@@ -1,5 +1,31 @@
 //    /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test("urlhere.com")
 
+/*
+if (link.search(/^http[s]?\:\/\//) == -1) {
+  link = 'http://' + link;
+}
+return link;
+*/
+
+$('.url-bar > input').keypress(function(event) {
+
+  var link = $(this).val();
+  if (/(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(link)) {
+    if (!/^http[s]?\:\/\//.test(link)) {
+      link = 'http://' + link;
+      console.log(link);
+    }
+  }
+  else {
+    link = 'https://google.com/#q=' + encodeURI(link);
+    console.log(link);
+  }
+
+  if(event.which === 13) {
+    window.location.href = link;
+  }
+});
+
 (function($) {
     $.fn.clickToggle = function(func1, func2) {
         var funcs = [func1, func2];
@@ -23,12 +49,14 @@ $('.plus').clickToggle(
     });
     $('.popup').css("z-index", 2);
     $('.popup').css("opacity", 1).delay(220);
+    $('.url-bar').css("opacity", 0).delay(220);
   },
   function() {
     $('.plus').removeAttr("style");
     $('.plus').css("transform", "rotate(0deg)");
     $('.popup').css("opacity", 0);
     $('.popup').css("z-index", -1).delay(220);
+    $('.url-bar').css("opacity", 1).delay(220);
   }
 );
 
@@ -47,6 +75,7 @@ $('.addWebsite').click(function() {
       "<a target=\"_blank\" class=\"website-link\" href=\"" + inputURL + "\">" + inputURL + "</a> \n" +
     "</li>\n"
   );
+  sliderUpdate();
 });
 
 $('.input-URL').keypress(function(event) {
@@ -65,6 +94,7 @@ $('.input-URL').keypress(function(event) {
        "<a target=\"_blank\" class=\"website-link\" href=\"" + inputURL + "\">" + inputURL + "</a> \n" +
      "</li>\n"
    );
+   sliderUpdate();
   }
 });
 
@@ -74,6 +104,7 @@ $('.input-URL').keypress(function(event) {
 
 $(document).on("click", ".remove-website", function() {
   $(this).parent().remove();
+  sliderUpdate();
 });
 
 // $(document).on("click", ".title", function() {
@@ -85,11 +116,11 @@ $(document).on("click", ".remove-website", function() {
 $(window).on("unload", function(e) {
   localStorage.setItem('website-list', $('.website-list').prop('outerHTML'));
 });
+localStorage.clear('website-list');
 if (localStorage.getItem('website-list') !== null) {
   $('.website-list').replaceWith(localStorage.getItem('website-list'));
 }
 // SIX (FOUR SIGNIFICANT) LINES FOR OFFLINE STORAGE AND DEFAULTING, I LOVE YOU HTML5
-
 
 $('body').hover(function() {
   $('.plus').toggleClass('show');
@@ -99,16 +130,33 @@ $('.slider').hover(function() {
   $('html').toggleClass('scroll-hide');
 });
 
-sliderItems = $('.slider').children('.slider-item');
+function sliderUpdate() {
+  $('.slider').empty();
+  $('.website-list > li').each(function(i) {
+    var name = $(this).children('.website-name').text();
+    var link = $(this).children('.website-link').text();
 
-hue = 360 / sliderItems.length;
-i = sliderItems.length
-sliderItems.each(function () {
-  console.log($(this).attr('class'));
-  $(this).addClass('hue-' + i);
+    $('.slider').append(
+      "<a href=\"" + link + "\" class=\"slider-link\">" +
+        "<div class=\"slider-item\">\n" +
+          "<span>" + name + "</span>\n" +
+        "</div>\n" +
+      "</a>"
+    );
+  });
+  $('.slider').append("<a class=\"spacer\"></a>");
 
-  $('.hue-' + i).css('background', 'hsl(' + (hue * (i - 0.4)) + ', 80%, 60%)');
-  i--;
-});
+  sliderItems = $('.slider').children('.slider-link');
 
-console.log(hue);
+  hue = 360 / sliderItems.length;
+  i = sliderItems.length
+  sliderItems.each(function () {
+    console.log($(this).attr('class'));
+    $(this).addClass('hue-' + i);
+
+    $('.hue-' + i).css('background', 'hsl(' + (hue * (i - 0.4)) + ', 80%, 60%)');
+    i--;
+  });
+  console.log(hue);
+}
+sliderUpdate()
