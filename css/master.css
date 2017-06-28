@@ -107,23 +107,14 @@ body, html {
 }
 
 .slider {
-  float: right;
   display: inline-flex;
   align-items: center;
-  overflow-y: hidden;
-  overflow-x: auto;
-  width: calc((100% - 280px) - 40px);
-  height: 4.5em;
-  white-space: nowrap;
-  border: 1px solid #ddd;
-  border-radius: 10px;
 }
 
 .slider a {
   display: inline-block;
-  margin: 5px 5px 0 5px;
-  padding: 10px;
-  background: #111;
+  margin: 5pt;
+  padding: 15pt;
   color: #fff;
   border-radius: 10px;
   text-decoration: none;
