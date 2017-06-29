@@ -182,20 +182,50 @@ function sliderUpdate() {
       "</a>"
     );
   });
-  $('.slider').append("<a class=\"spacer\"></a>");
 
   sliderItems = $('.slider').children('.slider-link');
+  var sliderLinks = []
 
-  hue = 255 / sliderItems.length;
-  i = sliderItems.length
+$('.slider-link').each(function() {
+  sliderLinks.push($(this).prop('outerHTML'));
+});
+console.log(sliderLinks);
+
+var i = 0;
+
+var sliderHeight = $('.slider').height();
+
+while (sliderHeight < $(document).height()) {
+  sliderHeight = $('.slider').height();
+  console.log(sliderHeight);
+  if (i >= sliderLinks.length) {
+    i = 0;
+  }
+  $('.slider').append(sliderLinks[i]);
+  i++;
+}
+k = 0
+while (k < 10) {
+  sliderHeight = $('.slider').height();
+  console.log(sliderHeight);
+  if (i >= sliderLinks.length) {
+    i = 0;
+  }
+  $('.slider').append(sliderLinks[i]);
+  i++;
+  k++;
+}
+  sliderItems = $('.slider').children('.slider-link');
+
+  hue = 310 / sliderItems.length;
+  var j = 0
   sliderItems.each(function () {
     console.log($(this).attr('class'));
-    $(this).addClass('hue-' + i);
+    $(this).addClass('hue-' + j);
 
-    $('.hue-' + i).css('background', 'hsl(' + (hue * (i - 0.4)) + ', 80%, 60%)');
-    i--;
+    $('.hue-' + j).css('background', 'hsl(' + (hue * (j - 0.4)) + ', 80%, 60%)');
+    j++;
   });
-  console.log(hue);
 }
 sliderUpdate()
 
