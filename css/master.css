@@ -8,6 +8,7 @@ body, html {
   width: 100%;
   color: #222;
   background: #fff;
+  overflow: hidden;
 }
 
 * {
@@ -78,10 +79,9 @@ body, html {
 }
 
 .top-bar {
-  margin: 1.5em 0;
+  top: 50pt;
   display: inline-block;
   align-items: center;
-  //
   justify-content: center;
   text-align: left;
   position: fixed;
@@ -151,10 +151,6 @@ body, html {
 }
 .slider a:first-child {
   margin-left: 12px;
-}
-.slider a:last-child {
-  background: transparent;
-  padding: 2px;
 }
 
 .popup {
