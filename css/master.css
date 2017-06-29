@@ -79,32 +79,40 @@ body, html {
 
 .top-bar {
   margin: 1.5em 0;
-  display: flex;
+  display: inline;
   align-items: center;
-  //justify-content: center;
+  //
+  justify-content: center;
   text-align: left;
-  position: relative;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  background: #f2f2f2;
+  border-radius: 12px;
+  padding: .2em .2em;
 }
 .title {
   font-size: 2.75em;
-  color: #fff;
+  color: #b2b2b2;
   float: left;
-  background: #333;
-  margin-right: 30px;
-  border-radius: 10px;
+  margin-right: .2em;
+  /* border-radius: 10px; */
+  /* padding: .1em .2em; */
 }
 
 .add-items, .plus {
   display: inline-block;
-  float: right;
+  /* float: right; */
   font-size:2em;
   color: #ddd;
   cursor: pointer;
+  margin-right: .1em;
+  margin-top: .25em;
 }
 .add-items {
-  margin-left: 20px;
-  height: 100%;
-  width: 30px;
+  /* margin-left: 20px; */
+  /* height: 100%; */
+  /* width: 30px; */
 }
 .plus {
   opacity: 0;
