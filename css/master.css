@@ -79,7 +79,7 @@ body, html {
 
 .top-bar {
   margin: 1.5em 0;
-  display: inline;
+  display: inline-block;
   align-items: center;
   //
   justify-content: center;
@@ -89,7 +89,10 @@ body, html {
   transform: translate(-50%);
   background: #f2f2f2;
   border-radius: 12px;
-  padding: .2em .2em;
+  padding-top: .6em;
+  padding-left: 1.5em;
+  filter: drop-shadow(0 4px 3px #bbb);
+  z-index: 2;
 }
 .title {
   font-size: 2.75em;
@@ -120,7 +123,12 @@ body, html {
 
 .squircle {
   width: 100% !important;
+  position: absolute;
   z-index: 1;
+  filter: drop-shadow(0 4px 3px #c2c2c2);
+  top: 0 !important;
+  text-align: center;
+  /* margin-top: -8em; */
 }
 
 .slider {
