@@ -2,17 +2,17 @@
 
 body, html {
   font-family: Rubik, sans-serif;
-  font-size: 16px;
+  font-size: 2pt;
   padding: 0;
   margin: 0;
   width: 100%;
-  overflow-x: hidden;
   color: #222;
   background: #fff;
 }
 
 * {
   font-family: Rubik, sans-serif;
+  /* font-size: 10pt; */
   box-sizing: border-box;
   outline: none;
   transition: all .2s ease;
@@ -55,6 +55,7 @@ body, html {
   filter: drop-shadow(0 4px 3px #bbb);
   background: #f2f2f2;
   font-weight: 200;
+  z-index: 10;
 }
 .url-bar input {
   border: none;
@@ -86,14 +87,17 @@ body, html {
 }
 .title {
   font-size: 2.75em;
+  color: #fff;
   float: left;
+  background: #333;
   margin-right: 30px;
+  border-radius: 10px;
 }
 
 .add-items, .plus {
   display: inline-block;
   float: right;
-  font-size: 2em;
+  font-size:2em;
   color: #ddd;
   cursor: pointer;
 }
@@ -107,21 +111,23 @@ body, html {
 }
 
 .squircle {
-  
+  width: 100% !important;
+  z-index: 1;
 }
 
 .slider {
-  display: inline-flex;
+  /* display: inline-flex; */
   align-items: center;
 }
 
 .slider a {
   display: inline-block;
   margin: 5pt;
-  padding: 15pt;
+  padding: 19pt;
   color: #fff;
   border-radius: 10px;
   text-decoration: none;
+  font-size: 20pt;
 }
 .slider a:hover, .slider a:active, .slider a:focus  {
   color: #fff;
