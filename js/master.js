@@ -81,6 +81,7 @@ $(function() {
     placeholder: "empty-li",
     items: ".sorting-initialize",
     update: function() {
+      $(".website-list > li").addClass("ui-state-default");
       sliderUpdate();
     }
   });
@@ -93,13 +94,18 @@ $(function() {
 $('.addWebsite').click(function() {
   var inputWebsite = $('.input-website').val();
   var inputURL     = $('.input-URL').val();
+  if (/(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(inputURL)) {
+    if (!/^http[s]?\:\/\//.test(inputURL)) {
+      inputURL = 'http://' + inputURL;
+    }
+  }
   if (inputWebsite === "" || inputURL === "") { return 1; }
 
   $('.input-website').val("");
   $('.input-URL').val(""); // reset
 
   $('.website-list').append(
-    "<li>\n" +
+    "<li class=\"website-list-item ui-state-default sorting-initialize ui-sortable-handle\">\n" +
       "<span class=\"website-name\">" + inputWebsite + "</span> \n" +
       "<i class=\"fa fa-times remove-website\"></i> \n" +
       "<a target=\"_blank\" class=\"website-link\" href=\"" + inputURL + "\">" + inputURL + "</a> \n" +
@@ -112,13 +118,18 @@ $('.input-URL').keypress(function(event) {
  if(event.which === 13) {
    var inputWebsite = $('.input-website').val();
    var inputURL     = $('.input-URL').val();
+   if (/(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(inputURL)) {
+     if (!/^http[s]?\:\/\//.test(inputURL)) {
+       inputURL = 'http://' + inputURL;
+     }
+   }
    if (inputWebsite === "" || inputURL === "") { return 1; }
 
    $('.input-website').val("");
    $('.input-URL').val(""); // reset
 
    $('.website-list').append(
-     "<li class=\"website-list-item\">\n" +
+     "<li class=\"website-list-item ui-state-default sorting-initialize ui-sortable-handle\">\n" +
        "<span class=\"website-name\">" + inputWebsite + "</span> \n" +
        "<i class=\"fa fa-times remove-website\"></i> \n" +
        "<a target=\"_blank\" class=\"website-link\" href=\"" + inputURL + "\">" + inputURL + "</a> \n" +
@@ -179,6 +190,7 @@ $('.slider').hover(
 );
 
 function sliderUpdate() {
+  console.log('Updated slider!')
   $('.slider').empty();
   $('.website-list > .website-list-item').each(function(i) {
     var name = $(this).children('.website-name').text();
