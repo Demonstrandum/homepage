@@ -160,13 +160,23 @@ if (localStorage.getItem('website-list') !== null) {
 }
 // SIX (FOUR SIGNIFICANT) LINES FOR OFFLINE STORAGE AND DEFAULTING, I LOVE YOU HTML5
 
-$('body').hover(function() {
-  $('.plus').toggleClass('show');
-});
+$('body').hover(
+  function() {
+    $('.plus').addClass('show');
+  },
+  function() {
+    $('.plus').removeClass('show');
+  }
+);
 
-$('.slider').hover(function() {
-  $('html').toggleClass('scroll-hide');
-});
+$('.slider').hover(
+  function() {
+    $('html').addClass('scroll-hide');
+  },
+  function() {
+    $('html').removeClass('scroll-hide');
+  }
+);
 
 function sliderUpdate() {
   $('.slider').empty();
