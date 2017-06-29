@@ -186,7 +186,7 @@ function sliderUpdate() {
 
   sliderItems = $('.slider').children('.slider-link');
 
-  hue = 360 / sliderItems.length;
+  hue = 255 / sliderItems.length;
   i = sliderItems.length
   sliderItems.each(function () {
     console.log($(this).attr('class'));
