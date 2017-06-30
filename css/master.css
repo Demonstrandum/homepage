@@ -109,8 +109,7 @@ body, html {
   font-size:2em;
   color: #ddd;
   cursor: pointer;
-  margin-right: .1em;
-  margin-top: .25em;
+  margin: .25em .4em 0 .2em;
 }
 .add-items {
   /* margin-left: 20px; */
@@ -119,12 +118,13 @@ body, html {
 }
 
 .squircle {
-  width: 100% !important;
+  width: 120% !important;
   position: absolute;
   z-index: 1;
   filter: drop-shadow(0 4px 3px #c2c2c2);
   top: 0 !important;
   text-align: center;
+  left: -10%;
   /* margin-top: -8em; */
 }
 
