@@ -1,0 +1,253 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,400i,500,700&subset=cyrillic,latin-ext');
+
+body, html {
+  font-family: Rubik, sans-serif;
+  font-size: 2pt;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  color: #222;
+  background: #fff;
+  overflow: hidden;
+}
+
+* {
+  font-family: Rubik, sans-serif;
+  /* font-size: 10pt; */
+  box-sizing: border-box;
+  outline: none;
+  transition: all .2s ease;
+}
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    position: absolute;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+    margin: 5px;
+}
+::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    transition: all .2s ease;
+}
+.slider::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: rgba(0, 0, 0, 0);
+    transition: all .2s ease;
+}
+.scroll-hide .slider::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.show {
+  opacity: 1 !important;
+}
+
+.url-bar{
+  position: absolute;
+  width: 50em;
+  height: 7em;
+  top: calc(50% - 3.5em);
+  left: calc(50% - 25em);
+  border-radius: 12px;
+  filter: drop-shadow(0 4px 3px #bbb);
+  background: #f2f2f2;
+  font-weight: 200;
+  z-index: 10;
+}
+.url-bar input {
+  border: none;
+  padding: 0em .4em;
+  font-size: 4em;
+  margin: 9px;
+  width: calc(100% - 2em);
+  height: calc(100% - 18px);
+  background: transparent;
+}
+.url-bar svg {
+  height: 6em;
+  margin-top: 0em;
+  position: absolute;
+  bottom: .4em;
+  cursor: pointer;
+}
+::-webkit-input-placeholder {
+    color: #aaa;
+}
+
+.top-bar {
+  top: 50pt;
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%);
+  background: #f2f2f2;
+  border-radius: 12px;
+  padding-top: .6em;
+  padding-left: 1.5em;
+  filter: drop-shadow(0 4px 3px #bbb);
+  z-index: 2;
+}
+.title {
+  font-size: 2.75em;
+  color: #b2b2b2;
+  float: left;
+  margin-right: .2em;
+  /* border-radius: 10px; */
+  /* padding: .1em .2em; */
+}
+
+.add-items, .plus {
+  display: inline-block;
+  /* float: right; */
+  font-size:2em;
+  color: #ddd;
+  cursor: pointer;
+  margin: .25em .4em 0 .2em;
+}
+.add-items {
+  /* margin-left: 20px; */
+  /* height: 100%; */
+  /* width: 30px; */
+}
+
+.squircle {
+  width: 120% !important;
+  position: absolute;
+  z-index: 1;
+  filter: drop-shadow(0 4px 3px #c2c2c2);
+  top: 0 !important;
+  text-align: center;
+  left: -10%;
+  /* margin-top: -8em; */
+}
+
+.slider {
+  /* display: inline-flex; */
+  align-items: center;
+}
+
+.slider a {
+  display: inline-block;
+  margin: 5pt;
+  padding: 19pt;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 20pt;
+}
+.slider a:hover, .slider a:active, .slider a:focus  {
+  color: #fff;
+  text-decoration: none;
+}
+.slider a:first-child {
+  margin-left: 12px;
+}
+
+.popup {
+  width: 50rem;
+  height: 50rem;
+  left: calc(-25rem + 50vw);
+  top:  calc(-25rem + 50vh);
+  background: #f2f2f2;
+  position: absolute;
+  border-radius: 10px;
+  filter: drop-shadow(0 7px 7px #bbb);
+  padding: 1em 2em;
+  z-index: -1;
+  opacity: 0;
+}
+
+.pop-top {
+  height: calc(100% - 14em);
+  width: 100%;
+}
+.pop-top .websites-items {
+  margin: 2em 0 0 0;
+  height: calc(100% - 6em - 24px);
+  overflow-x: auto;
+  overflow-y: scroll;
+}
+.pop-top h1 {
+  margin: 0.3em 0;
+  font-weight: 200;
+}
+#reset {
+  font-size: 1em;
+  position: absolute;
+  top: 75px;
+  right: 2.4em;
+  padding: 2px 5px;
+  border-radius: 4px;
+  border: 1px solid;
+  color: #aaa;
+}
+
+.website-list {
+  padding: 0 0 0 5px;
+  list-style: none;
+}
+.website-list li {
+  border: none;
+  padding: .4em;
+  cursor: move;
+  background: #f2f2f2;
+  border-radius: 5px;
+  height: 32px;
+}
+.empty-li {
+  background: #bbb !important;
+}
+.website-list li:nth-child(2n) {
+  background: #fafafa;
+}
+.website-list li .remove-website {
+  margin-top: 3px;
+  cursor: pointer;
+}
+.website-list .remove-website, .website-list a {
+  float: right;
+  margin: 0 3px;
+}
+
+.controls {
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - 4em);
+}
+.controls hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid;
+  margin: 0 0 1.5em 0;
+  padding: 0;
+  color: #ccc;
+}
+.controls input, button {
+  margin: 10px 0;
+  display: block;
+}
+.controls input {
+  border: none;
+  border-radius: 5px;
+  filter: drop-shadow(0 2px 3px #bbb);
+  height: 2em;
+  padding: 0 1em;
+  width: 100%;
+}
+.controls button {
+  margin: 30px auto;
+  padding: 10px 1em;
+  background: #fff;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+  font-size: 1.5em;
+  font-weight: 200;
+}
