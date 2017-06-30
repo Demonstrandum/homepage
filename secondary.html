@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="./css/secondary.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
+  </head>
+  <body>
+
+    <div class="top-bar">
+      <p class="title">Where to go?</p>
+
+      <div class="add-items">
+        <i class="fa fa-plus plus"></i>
+      </div>
+    </div>
+
+    <div class="url-bar">
+      <input type="text" placeholder="URL or Search">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <polyline points="14 6 20 12 14 18"></polyline>
+      </svg>
+    </div>
+    <div class="popup">
+      <div class="pop-top">
+        <h1>Add your Favourite<br />Website</h1><span id="reset">Reset</span>
+
+        <div class="websites-items">
+          <ul class="website-list">
+            <li class="website-list-item" class="website-list-item">
+              <span class="website-name">Search Engine</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://google.com">https://google.com/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Videos</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://youtube.com/">https://youtube.com/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Social</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://facebook.com">https://facebook.com/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Github</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://github.com">https://github.com/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Encyclopedia</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://wikipedia.org/">https://wikipedia.org/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Shopping</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://amazon.com">https://amazon.com/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Stack Overflow</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://stackoverflow.com">https://stackoverflow.com/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Paypal</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://paypal.com">https://paypal.com/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Webdesign</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://jetspace.co">https://jetspace.co/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Translate</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://translate.google.com">https://translate.google.com/</a>
+            </li>
+            <li class="website-list-item">
+              <span class="website-name">Technology</span>
+              <i class="fa fa-times remove-website"></i>
+              <a target="_blank" class="website-link" href="https://boards.4chan.org/g/">https://boards.4chan.org/g/</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="controls">
+        <hr />
+        <input class="web-input input-website" placeholder="Webiste friendly name or purpose">
+        <input class="web-input input-URL" placeholder="URL with protocol, e.g. http://website.com/">
+        <button class="addWebsite">Add to list</button>
+      </div>
+    </div>
+
+  <div class="col-md-12, squircle">
+    <div class="slider">
+      <!-- Favourite websites, appended in js -->
+    </div>
+  </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" charset="utf-8"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="./js/secondary.js" charset="utf-8"></script>
+  </body>
+</html>
