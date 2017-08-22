@@ -187,11 +187,20 @@ body, html {
 .website-list li {
   border: none;
   padding: .4em;
-  cursor: move;
+  cursor: move; /* fallback */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
   background: #f2f2f2;
   border-radius: 5px;
   height: 32px;
 }
+.website-list li:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
 .empty-li {
   background: #bbb !important;
 }
