@@ -56,7 +56,7 @@ body, html {
   filter: drop-shadow(0 4px 3px #bbb);
   background: #f2f2f2;
   font-weight: 200;
-  z-index: 10;
+  z-index: 2;
 }
 .url-bar input {
   border: none;
@@ -122,7 +122,7 @@ body, html {
   position: absolute;
   z-index: 1;
   filter: drop-shadow(0 4px 3px #c2c2c2);
-  top: 0 !important;
+  top: -2.5% !important;
   text-align: center;
   left: -10%;
   /* margin-top: -8em; */
@@ -160,7 +160,7 @@ body, html {
   border-radius: 10px;
   filter: drop-shadow(0 7px 7px #bbb);
   padding: 1em 2em;
-  z-index: -1;
+  z-index: 0;
   opacity: 0;
 }
 
