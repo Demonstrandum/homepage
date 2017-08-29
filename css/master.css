@@ -160,7 +160,7 @@ body, html {
 }
 .pop-top .websites-items {
   margin: 2em 0 0 0;
-  height: calc(100% - 6em - 24px);
+  height: calc(100% - 6em - 4px);
   overflow-x: auto;
   overflow-y: scroll;
 }
@@ -231,7 +231,7 @@ body, html {
   color: #ccc;
 }
 .controls input, button {
-  margin: 10px 0;
+  margin: 5px 0;
   display: block;
 }
 .controls input {
@@ -241,7 +241,39 @@ body, html {
   height: 2em;
   padding: 0 1em;
   width: 100%;
+  display: inline-block;
 }
+
+.controls .inputs {
+  display: block;
+  margin: -15px 0;
+}
+
+.controls .port {
+  width: 8em;
+  margin-left: 25px;
+  background: #fff;
+  color: #777;
+}
+
+.controls .port:hover {
+  color: #444;
+}
+
+.controls .web-input {
+  width: calc(100% - (8em + 4px + 25px));
+}
+
+.vr {
+  position: absolute;
+  width: 1px;
+  height: 55px;
+  background: #ddd;
+  right: 9em;
+  top: 20px;
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.3));
+}
+
 .controls button {
   margin: 30px auto;
   padding: 10px 1em;

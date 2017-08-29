@@ -82,8 +82,15 @@
       </div>
       <div class="controls">
         <hr />
-        <input class="web-input input-website" placeholder="Webiste friendly name or purpose">
-        <input class="web-input input-URL" placeholder="URL with protocol, e.g. http://website.com/">
+        <div class="inputs">
+          <input class="web-input input-website" placeholder="Webiste friendly name or purpose" />
+          <input class="port import" type="button" value="Import" />
+          <input id="importer" type="file" name="import" style="display: none;" />
+          <input class="web-input input-URL" placeholder="URL, e.g. http://website.com/" />
+          <input class="port export" type="button" value="Export" />
+          <a id="exporter" style="display: none;"></a>
+        </div>
+        <div class="vr"></div>
         <button class="addWebsite">Add to list</button>
       </div>
     </div>
