@@ -1,12 +1,3 @@
-//    /(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test("urlhere.com")
-
-/*
-if (link.search(/^http[s]?\:\/\//) == -1) {
-  link = 'http://' + link;
-}
-return link;
-*/
-
 $('.url-bar > input').keypress(function(event) {
 
   var link = $(this).val();
@@ -139,21 +130,13 @@ $('.input-URL').keypress(function(event) {
   }
 });
 
-// $('.remove-website').on('click', (function() {
-//   $(this).parent().remove();
-// });
 
 $(document).on("click", ".remove-website", function() {
   $(this).parent().remove();
   sliderUpdate();
 });
 
-// $(document).on("click", ".title", function() {
-//   console.log($('.website-list').prop('outerHTML'));
-// });
-// $(window).on("load", function(e) {
-//   localStorage.setItem('website-list', $('.website-list').prop('outerHTML'));
-// });
+
 var clearLocal = false;
 $('#reset').on("click", function() {
   localStorage.clear('website-list');
@@ -170,6 +153,31 @@ if (localStorage.getItem('website-list') !== null) {
   $('.website-list').replaceWith(localStorage.getItem('website-list'));
 }
 // SIX (FOUR SIGNIFICANT) LINES FOR OFFLINE STORAGE AND DEFAULTING, I LOVE YOU HTML5
+
+$('.import').on("click", function() {
+  $('#importer').get(0).click();
+});
+$('.export').on("click", function() {
+  $('#exporter').get(0).click();
+});
+
+$('#importer').change(function() {
+  var file = $('#importer')[0].files[0];
+  var reader = new FileReader();
+  var contents;
+  reader.readAsText(file, 'UTF-8');
+  
+  reader.onload = function(evt) {
+    contents = evt.target.result;
+    $('.website-list').replaceWith(contents);
+    localStorage.setItem('website-list', contents);
+    location.reload();
+  }
+  reader.onerror = function(evt) {
+    alert('There was an error reading your file: "' + file.name + '"');
+  }
+
+});
 
 $('body').hover(
   function() {
@@ -218,5 +226,15 @@ function sliderUpdate() {
     i--;
   });
   console.log(hue);
+
+
+  //Deal with exporting link to save the .website-list outer html
+  (function() {
+    var data = $('.website-list').prop('outerHTML');
+    $('#exporter')
+      .attr('href', 'data:text/html;charset=utf8,' + encodeURIComponent(data))
+      .attr('download', 'homepage-favourites.html');
+  })();
+
 }
 sliderUpdate()
