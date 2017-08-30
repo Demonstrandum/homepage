@@ -1,3 +1,8 @@
+$(document).ready(function() {
+  $('.websites-items').find('*').removeAttr('style');
+  $('.url-bar input[type="text"]')[0].focus();
+});
+
 $('.url-bar > input').keypress(function(event) {
 
   var link = $(this).val();
@@ -95,14 +100,21 @@ $('.addWebsite').click(function() {
   $('.input-website').val("");
   $('.input-URL').val(""); // reset
 
-  $('.website-list').append(
+  $('.website-list').prepend(
     "<li class=\"website-list-item ui-state-default sorting-initialize ui-sortable-handle\">\n" +
       "<span class=\"website-name\">" + inputWebsite + "</span> \n" +
       "<i class=\"fa fa-times remove-website\"></i> \n" +
       "<a target=\"_blank\" class=\"website-link\" href=\"" + inputURL + "\">" + inputURL + "</a> \n" +
     "</li>\n"
   );
+
+  var scrollTo = $('.website-list-item:nth-child(1)');
+  $('.websites-items').animate({
+    scrollTop: scrollTo.offset().top - $('.websites-items').offset().top + $('.websites-items').scrollTop()
+  });
+
   sliderUpdate();
+  highlight(scrollTo);
 });
 
 $('.input-URL').keypress(function(event) {
@@ -119,17 +131,38 @@ $('.input-URL').keypress(function(event) {
    $('.input-website').val("");
    $('.input-URL').val(""); // reset
 
-   $('.website-list').append(
+   $('.website-list').prepend(
      "<li class=\"website-list-item ui-state-default sorting-initialize ui-sortable-handle\">\n" +
        "<span class=\"website-name\">" + inputWebsite + "</span> \n" +
        "<i class=\"fa fa-times remove-website\"></i> \n" +
        "<a target=\"_blank\" class=\"website-link\" href=\"" + inputURL + "\">" + inputURL + "</a> \n" +
      "</li>\n"
    );
+
+   var scrollTo = $('.website-list-item:nth-child(1)');
+   $('.websites-items').animate({
+     scrollTop: scrollTo.offset().top - $('.websites-items').offset().top + $('.websites-items').scrollTop()
+   });
+
    sliderUpdate();
+   highlight(scrollTo);
   }
 });
 
+function highlight(elem) {
+  var fadeTime = 1750;
+  elem.css({
+    "transition": "all 1s ease-in-out",
+    "background-color": "#ff7"
+  });
+
+  setTimeout(function() {
+    elem.css({"background-color": ""});
+  }, fadeTime);
+  setTimeout(function() {
+    elem.css({"transition": ""});
+  }, fadeTime * 2);
+}
 
 $(document).on("click", ".remove-website", function() {
   $(this).parent().remove();
@@ -148,6 +181,7 @@ $(window).on("unload", function(e) {
   if (!clearLocal) {
     localStorage.setItem('website-list', $('.website-list').prop('outerHTML'));
   }
+  $('.websites-items').find('*').removeAttr('style');
 });
 if (localStorage.getItem('website-list') !== null) {
   $('.website-list').replaceWith(localStorage.getItem('website-list'));
