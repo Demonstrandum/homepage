@@ -6,10 +6,9 @@ $(document).ready(function() {
 $('.url-bar > input').keypress(function(event) {
 
   var link = $(this).val();
-  if (/(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(link)) {
-    if (!/^http[s]?\:\/\//.test(link)) {
+  if (/(^|\s)((\w+:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(link)) {
+    if (!/^http[s]?\:\/\//.test(link))
       link = 'http://' + link;
-    }
   }
   else {
     link = 'https://google.com/#q=' + encodeURI(link);
@@ -23,10 +22,9 @@ $('.url-bar > input').keypress(function(event) {
 
 $('.url-bar > svg').on("click", function() {
   var link = $('.url-bar > input').val();
-  if (/(^|\s)((https?:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(link)) {
-    if (!/^http[s]?\:\/\//.test(link)) {
+  if (/(^|\s)((\w+:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(link)) {
+    if (!/^http[s]?\:\/\//.test(link))
       link = 'http://' + link;
-    }
   }
   else {
     link = 'https://google.com/#q=' + encodeURI(link);
@@ -55,16 +53,16 @@ $('.plus').clickToggle(
       "transform": "rotate(45deg)",
       "color": "#999"
     });
-    $('.popup').css("z-index", 2);
-    $('.popup').css("opacity", 1).delay(220);
-    $('.url-bar').css("opacity", 0).delay(220);
+    $('.popup').css({"z-index": 2, "display": "block"});
+    $('.popup').css("opacity", 1).delay(420);
+    $('.url-bar').css("opacity", 0).delay(420);
   },
   function() {
     $('.plus').removeAttr("style");
     $('.plus').css("transform", "rotate(0deg)");
     $('.popup').css("opacity", 0);
-    $('.popup').css("z-index", -1).delay(220);
-    $('.url-bar').css("opacity", 1).delay(220);
+    $('.popup').css({"z-index": -1, "display": "none"}).delay(420);
+    $('.url-bar').css("opacity", 1).delay(420);
   }
 );
 
