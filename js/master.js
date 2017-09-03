@@ -6,9 +6,12 @@ $(document).ready(function() {
 $('.url-bar > input').keypress(function(event) {
 
   var link = $(this).val();
-  if (/(^|\s)((\w+:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(link)) {
+  if (/(\w+)\.(\w+)/gi.test(link) && !/\s+/.test(link)) {
     if (!/^http[s]?\:\/\//.test(link))
       link = 'http://' + link;
+  }
+  else if (/(\w+:\/\/).*/.test(link)) {
+    link = encodeURI(link);
   }
   else {
     link = 'https://google.com/#q=' + encodeURI(link);
@@ -22,9 +25,12 @@ $('.url-bar > input').keypress(function(event) {
 
 $('.url-bar > svg').on("click", function() {
   var link = $('.url-bar > input').val();
-  if (/(^|\s)((\w+:\/\/)?[\w-]+(\.[\w-]+)+\.?(:\d+)?(\/\S*)?)/gi.test(link)) {
+  if (/(\w+)\.(\w+)/gi.test(link) && !/\s+/.test(link)) {
     if (!/^http[s]?\:\/\//.test(link))
       link = 'http://' + link;
+  }
+  else if (/(\w+:\/\/).*/.test(link)) {
+    link = encodeURI(link);
   }
   else {
     link = 'https://google.com/#q=' + encodeURI(link);
