@@ -195,6 +195,7 @@ body, html {
   background: #f2f2f2;
   border-radius: 5px;
   height: 32px;
+  overflow-y: scroll;
 }
 .website-list li:active {
   cursor: grabbing;
@@ -208,13 +209,17 @@ body, html {
 .website-list li:nth-child(2n) {
   background: #fafafa;
 }
-.website-list li .remove-website {
+.website-list li .remove-website, .edit, .save {
+  float: right;
   margin-top: 3px;
   cursor: pointer;
 }
-.website-list .remove-website, .website-list a {
+.website-list .remove-website, .website-list a  {
   float: right;
   margin: 0 3px;
+}
+.edit, .save {
+  margin: 3px 6px 0 6px;
 }
 
 .controls {
@@ -284,3 +289,18 @@ body, html {
   font-size: 1.5em;
   font-weight: 200;
 }
+
+input.website-link, input.website-name {
+  background: none;
+  border: none;
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
+  padding: 1px 3px 0px 3px;
+  margin: 0;
+  border-radius: 5px;
+}
+input.website-link {
+  margin: 0 3px;
+  float: right;
+  text-align: right;
+}
+

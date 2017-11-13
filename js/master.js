@@ -173,6 +173,73 @@ $(document).on("click", ".remove-website", function() {
   sliderUpdate();
 });
 
+var editing = false;
+var clickedOnEdit;
+var nameElem = null, linkElem = null, linkHTML = null, nameHTML = null;
+$(document).on("click", ".edit", function() {
+  editing = true;
+  clickedOnEdit = this;
+  nameElem = $(this).siblings(".website-name");
+  linkElem = $(this).siblings(".website-link");
+  nameHTML = $('<div>').append(nameElem.clone()).html();;
+  linkHTML = $('<div>').append(linkElem.clone()).html();
+  nameElem = nameElem.clone();
+  linkElem = linkElem.clone();
+
+  $(this).siblings(".website-name").replaceWith(`
+    <input class="website-name" value="${nameElem.text()}" 
+    placeholder="Website name" />
+  `);
+  $(this).siblings(".website-link").replaceWith(`
+    <input class="website-link" value="${linkElem.text()}"
+    placeholder="Website link" />
+  `);
+  $(this).attr("class", "fa fa-floppy-o save");
+});
+function saveEdit(that) {
+  let nameGet = $(that).siblings(".website-name").clone();
+  let linkGet = $(that).siblings(".website-link").clone();
+ 
+  console.log(nameHTML);
+  $(that).siblings(".website-name").replaceWith(nameHTML);
+  $(that).siblings(".website-link").replaceWith(linkHTML);
+  $(that).siblings(".website-name").html(nameGet.val());
+  $(that).siblings(".website-link").html(linkGet.val());
+  
+  $(that).attr("class", "fa fa-pencil edit")
+  sliderUpdate();
+}
+$(document).on("click", ".save", function() {
+  if (editing) {
+    editing = false;
+    saveEdit(this);
+  }
+});
+
+$(document).on("mouseenter", ".website-list-item",
+  function() {
+    $(this).css({
+      "background-color": "#ddd"
+    });
+    $(this).children(".remove-website").after(`
+      <i class="fa fa-pencil edit"></i> 
+    `);
+    console.log($(this).children(".remove-website"))
+  }
+);
+$(document).on("mouseleave", ".website-list-item",
+  function() {
+    if (editing) {
+      saveEdit(clickedOnEdit);
+      editing = false;
+    }
+    $(this).css({
+      "background-color": ""
+    });
+    $(this).children(".edit").remove();
+    $(this).children(".save").remove();
+  }
+);
 
 var clearLocal = false;
 $('#reset').on("click", function() {
@@ -182,6 +249,14 @@ $('#reset').on("click", function() {
 });
 
 $(window).on("unload", function(e) {
+  if (editing) {
+    editing = false;
+    saveEdit(clickedOnEdit);
+  }
+
+  $(".edit").remove();
+  $(".save").remove();
+
   if (!clearLocal) {
     localStorage.setItem('website-list', $('.website-list').prop('outerHTML'));
   }
@@ -271,7 +346,7 @@ function sliderUpdate() {
     var data = $('.website-list').prop('outerHTML');
     $('#exporter')
       .attr('href', 'data:text/html;charset=utf8,' + encodeURIComponent(data))
-      .attr('download', 'homepage-favourites.html');
+      .attr('download', 'homepage.html.part');
   })();
 
 }
