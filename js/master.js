@@ -72,6 +72,27 @@ $('.plus').clickToggle(
   }
 );
 
+// Horizontal scroll by vertical scroll
+var scroller = {};
+scroller.e = $(".slider").get(0);
+
+if (scroller.e.addEventListener) {
+  scroller.e.addEventListener("mousewheel", MouseWheelHandler, false);
+  scroller.e.addEventListener("DOMMouseScroll", MouseWheelHandler, false);
+}
+
+function MouseWheelHandler(e) {
+  var e = window.event || e;
+  var delta = - 20 * (Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail))));
+  var pst = $('.slider').scrollLeft() + delta;
+
+  if (pst < 0)
+    pst = 0;
+
+  $('.slider').scrollLeft(pst);
+  return false;
+}
+
 // $(".website-list").sortable({
 //   placeholder: "empty-li"
 // });
